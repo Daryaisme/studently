@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+          crossorigin="anonymous">
+    <title>STUDENTLY</title>
+</head>
+<body class="container mt-4" style="margin: 0 auto;">
+<h1 style="padding-bottom: 20px; margin: 0 auto; width: fit-content">Registration</h1>
+<form th:action="@{/registration}" th:object="${user}" method="post" enctype="multipart/form-data"
+      style="margin: 0 auto; width: fit-content" class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+    <p>Name: <input type="text" name="name" placeholder="username" required style="width: fit-content" /></p>
+    <p>Email: <input name="email" type="email" placeholder="example@ex.com" required style="width: fit-content" /></p>
+    <p>Password: <input name="password" type="password" placeholder="password" required style="width: fit-content" /></p>
+    <p>Description: <input type="text" name="description" placeholder="description" required style="width: fit-content" /></p>
+    <p>First picture: <input type="file" name="file1" accept="image/png, image/jpeg" required style="width: fit-content" /></p>
+    <p>Second picture: <input type="file" name="file2" accept="image/png, image/jpeg" required style="width: fit-content" /></p>
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+    <input type="submit" value="Create!" style="font-size: 18px" class="btn btn-primary" />
+</form>
+<p th:if = "${error} != null" th:text="${error}" style="width: fit-content"></p>
+<p style="margin: 0 auto; width: fit-content">Already have an account? <a href="login" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Authentication</a></p>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</body>
+</html>

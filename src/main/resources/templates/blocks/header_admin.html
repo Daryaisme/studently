@@ -1,0 +1,6 @@
+<div th:fragment="header_admin" class="navbar navbar-expand-lg bg-body-tertiary">
+  <p th:text="'Hello, ' + ${isUser.name}" style="margin: 0; font-weight: bold; font-size: 20px;"></p>
+  <a th:href="@{/profile}" class="nav-link" aria-current="page">Home</a>
+  <a th:href="@{/admin/posts}" class="nav-link">Posts</a>
+  <a th:href="@{/admin/users}" class="nav-link">Users</a>
+</div>

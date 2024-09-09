@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+        crossorigin="anonymous">
+  <title>STUDENTLY</title>
+</head>
+<body class="container mt-4">
+<!--<form th:action="@{'/admin/post/edit/' + ${post.id}}" th:object="${post}" method="post"-->
+<!--      style="margin: 0 auto; width: fit-content" class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">-->
+<!--  <p>Title:<input type="text" name="title" th:value="${post.title}" required /></p>-->
+<!--  <p>Description:<input type="textarea" name="description" th:value="${post.description}" required /></p>-->
+<!--  <input type="hidden" name="_csrf" th:value="${_csrf.token}" />-->
+<!--  <input type="submit" value="Save" style="font-size: 18px" class="btn btn-primary" />-->
+<!--</form>-->
+
+<div th:if="${isUser.isAdmin()}">
+    <form th:action="@{'/admin/post/edit/' + ${post.id}}" th:object="${post}" method="post"
+          style="margin: 0 auto;" class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+        <p class="mb-3">Title:<input type="text" name="title" th:value="${post.title}" required class="form-control" ></p>
+        <p class="mb-3">Description:<input type="textarea" name="description" th:value="${post.description}" required class="form-control" ></p>
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+        <input type="submit" value="Save" style="font-size: 18px" class="btn btn-primary" />
+    </form>
+</div>
+<div th:if="${!isUser.isAdmin()}">
+    <form th:action="@{'/post/edit/' + ${post.id}}" th:object="${post}" method="post"
+          style="margin: 0 auto;" class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+        <p class="mb-3">Title:<input type="text" name="title" th:value="${post.title}" required class="form-control" ></p>
+        <p class="mb-3">Description:<input type="textarea" name="description" th:value="${post.description}" required class="form-control" ></p>
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+        <input type="submit" value="Save" style="font-size: 18px" class="btn btn-primary" />
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</body>
+</html>
